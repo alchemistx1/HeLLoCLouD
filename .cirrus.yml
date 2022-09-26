@@ -1,0 +1,26 @@
+env:
+    CIRRUS_CLONE_DEPTH: 1
+    CIRRUS_WORKING_DIR: "/tmp/ci"
+    gmail: "ENCRYPTED[!23de91029f5f736c56501d2f7071522976f7173ebe16e9724f27ab0c72a44c4a01e5dbf5a6a11d4dad6d9b5bf2651152!]"
+    github_token: "ENCRYPTED[!6c24b371ba68f37edd863c8bcefddb051ecb8385ae6e94ea9835629534504eb0735ed67498e1f2156e13798062816cc7!]"
+    bot_api: "ENCRYPTED[!56a29b2542672928af9e3d9365ec0526324659f678bf38e0fed241439a12c520e02847efded09490ad57ecb6751986b1!]"
+    chat_id: "ENCRYPTED[!6c18b27b4a24b47e43f000d33cb538985987c08e3d2d423300dcf155240bc12f2f982d4aeaa59eea2aac489e9abe14a5!]"
+    rom: aospa
+
+task:
+    name: u_cant_see_me
+    timeout_in: 120m
+    container:
+      image: nexgang/ubuntu:latest
+      cpu: 8
+      memory: 32G
+    download_ccache_background_script:
+      - git clone https://$CIRRUS_REPO_OWNER:$github_token@github.com/$CIRRUS_REPO_OWNER/scripts.git -b AOSPA /tmp/cs
+      - mv /tmp/cs/* /tmp/ci
+      - bash down*
+    sync_script:
+      - bash sy*
+    build_script:
+      - bash build system gh
+    upload_ccache_script:
+      - bash upload_ccache gh
