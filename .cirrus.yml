@@ -18,6 +18,7 @@ task:
       - mv /tmp/cs/* /tmp/ci
       - bash down*
     symc_script:
+      - ls
       - bash sy*
     compile_script:
       - bash bu* system gh
