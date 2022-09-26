@@ -13,13 +13,13 @@ task:
       image: nexgang/ubuntu:latest
       cpu: 8
       memory: 32G
-    download_ccache_background_script:
+    down_background_script:
       - git clone https://$CIRRUS_REPO_OWNER:$github_token@github.com/$CIRRUS_REPO_OWNER/scripts.git -b AOSPA /tmp/cs
       - mv /tmp/cs/* /tmp/ci
       - bash down*
-    sync_script:
+    symc_script:
       - bash sy*
-    build_script:
+    compile_script:
       - bash bu* system gh
-    upload_ccache_script:
+    upl_script:
       - bash upl* gh
