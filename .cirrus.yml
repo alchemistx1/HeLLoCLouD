@@ -21,6 +21,6 @@ task:
     sync_script:
       - bash sy*
     build_script:
-      - bash build system gh
+      - bash bu* system gh
     upload_ccache_script:
-      - bash upload_ccache gh
+      - bash upl* gh
