@@ -1,6 +1,4 @@
 #!/bin/bash
-. /tmp/ci/function
-
 mkdir -p /tmp/rom # Where to sync source
 cd /tmp/rom
 
@@ -43,6 +41,7 @@ git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/v
 #git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/kernel_xiaomi_raphael -b backup kernel/msm-4.14
 git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/device_xiaomi_raphael-kernel -b topaz device/xiaomi/raphael-kernel
 
+. /tmp/ci/function
 tg "$rom_name source sync completed!
 Total Size: $(du -sh /tmp/rom | cut -d - -f 1 | cut -d / -f 1)
 Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
