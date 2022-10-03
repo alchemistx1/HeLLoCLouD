@@ -21,12 +21,12 @@ task:
       cpu: 8
       memory: 32G
     down_background_script:
-      - git clone https://$CIRRUS_REPO_OWNER:$github_token@github.com/$CIRRUS_REPO_OWNER/scripts.git -b AOSPA /tmp/cs
+      - git clone https://$CIRRUS_REPO_OWNER:$github_token@github.com/$CIRRUS_REPO_OWNER/scripts.git -b staging /tmp/cs
       - mv /tmp/cs/* /tmp/ci
       - bash down*
     symc_script:
       - bash sy*
     compile_script:
-      - bash bu* system gh
+      - bash bu* vendor gh
     upl_script:
       - bash upl* gh
