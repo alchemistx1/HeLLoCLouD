@@ -1,14 +1,19 @@
 #!/bin/bash
+. /tmp/ci/function
 
 mkdir -p /tmp/rom # Where to sync source
 cd /tmp/rom
 
-tg () {
-	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$1&chat_id=${chat_id}"
-}
+if [[ $git_cookies != 0 ]]; then
 
-tg "Build started!
-https://cirrus-ci.com/build/$CIRRUS_BUILD_ID"
+sudo touch /etc/mtab
+sudo chmod 777 /etc/mtab
+
+echo "$git_cookies" > ~/git_cookies.sh
+bash ~/git_cookies.sh
+
+fi
+
 SECONDS=0
 
 ##some of my work
@@ -38,4 +43,9 @@ git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/v
 #git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/kernel_xiaomi_raphael -b backup kernel/msm-4.14
 git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/device_xiaomi_raphael-kernel -b topaz device/xiaomi/raphael-kernel
 
-tg "Cloned all Sources Successfully! Time Took: $(($SECONDS / 60))min and $(($SECONDS % 60))sec "
+tg "$rom_name source sync completed!
+Total Size: $(du -sh /tmp/rom | cut -d - -f 1 | cut -d / -f 1)
+Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
+Status: $progress"
+
+echo "$(($SECONDS / 60))" > /tmp/sync_time.txt
