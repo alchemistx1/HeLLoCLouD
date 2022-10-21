@@ -14,7 +14,7 @@ fi
 
 SECONDS=0
 
-##some of my work
+# some of my work
 git config --global user.name "$gmail"
 git config --global user.email "$CIRRUS_REPO_OWNER"
 
