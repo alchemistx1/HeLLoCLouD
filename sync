@@ -36,10 +36,11 @@ git clone https://github.com/$MAIN_REPO/local_manifests.git --depth 1 -b sapphir
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 # local manifest
-git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/device_xiaomi_raphael -b topaz-vintf device/xiaomi/raphael
-git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/vendor_xiaomi_raphael -b topaz-staging vendor/xiaomi/raphael
+git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/device_xiaomi_raphael -b topaz-wip device/xiaomi/raphael
+git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/vendor_xiaomi_raphael -b topaz-wip vendor/xiaomi/raphael
+git clone --depth=1 https://github.com/$MAIN_REPO/kernel_xiaomi_raphael.git -b topaz-13 kernel/msm-4.14
 #git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/kernel_xiaomi_raphael -b backup kernel/msm-4.14
-git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/device_xiaomi_raphael-kernel -b topaz device/xiaomi/raphael-kernel
+#git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/device_xiaomi_raphael-kernel -b topaz device/xiaomi/raphael-kernel
 
 . /tmp/ci/function
 tg "$rom_name source sync completed!
