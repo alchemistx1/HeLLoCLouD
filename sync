@@ -15,8 +15,8 @@ fi
 SECONDS=0
 
 # some of my work
-git config --global user.name "$gmail"
-git config --global user.email "$CIRRUS_REPO_OWNER"
+git config --global user.name "$CIRRUS_REPO_OWNER"
+git config --global user.email "$gmail"
 
 if [[ $git_cookies != 0 ]]; then
 
