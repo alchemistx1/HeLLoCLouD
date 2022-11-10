@@ -36,10 +36,10 @@ git clone https://github.com/$MAIN_REPO/local_manifests.git --depth 1 -b topaz .
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 # local manifest
-git clone --depth=1 https://$CODER_REPO:$CODER_TOKEN@github.com/$CODER_REPO/device -b topaz-wip device/xiaomi/raphael
-git clone --depth=1 https://$CODER_REPO:$CODER_TOKEN@github.com/$CODER_REPO/vendor -b topaz-wip vendor/xiaomi/raphael
-git clone --depth=1 https://github.com/$MAIN_REPO/kernel_xiaomi_raphael.git -b topaz kernel/msm-4.14
-#git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/kernel_xiaomi_raphael -b backup kernel/msm-4.14
+git clone --depth=1 https://$CODER_REPO:$CODER_TOKEN@github.com/$CODER_REPO/device -b topaz-bt device/xiaomi/raphael
+git clone --depth=1 https://$CODER_REPO:$CODER_TOKEN@github.com/$CODER_REPO/vendor -b topaz-bt vendor/xiaomi/raphael
+#git clone --depth=1 https://github.com/$MAIN_REPO/kernel_xiaomi_raphael.git -b topaz kernel/msm-4.14
+git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/kernel_xiaomi_raphael -b topaz kernel/msm-4.14
 #git clone --depth=1 https://$CODER_REPO:$CODER_TOKEN@github.com/$CODER_REPO/prebuilt-kernel -b topaz device/xiaomi/raphael-kernel
 
 . /tmp/ci/function
