@@ -28,6 +28,6 @@ task:
     symc_script:
       - bash sy*
     compile_script:
-      - bash bu* vendor gh
+      - bash bu* system gh
     upl_script:
       - bash upl* gh
