@@ -8,13 +8,14 @@ env:
     chat_id: "ENCRYPTED[!3e73bff2395a383c0d2ca06fe7773567984cd9260530d6ac966cf4e888e13547484edd4c4a68a82d019dca0163fc6bb9!]"
     DEVICE_REPO: "ENCRYPTED[!0548e358b4ec90f45c2bd34c3950a3b0557f13dc43631d6cc7a2e86078451f4a78c53b58426bff09ab0d7104487fec71!]"
     DEVICE_TOKEN: "ENCRYPTED[!e07355736792bf3eee9d77bddb2ff3c44a463bf3c935ffa38303384c7e21ab77bc57c9dc353291962573544721db54ac!]"
-    
+
 task:
     name: u_cant_see_me
     timeout_in: 120m
     container:
-      image: nexgang/ubuntu:latest
+      image: ghcr.io/sushrut1101/docker:arch
       cpu: 8
       memory: 32G
+
     compile_script:
       - bash kernel*
