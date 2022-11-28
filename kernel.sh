@@ -17,7 +17,7 @@ file() {
 	-F caption="$2 | *MD5 Checksum : *\`$MD5\`"
 }
 
-git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/kernel_xiaomi_raphael -b topaz-staging $CIRRUS_WORKING_DIR/msm-4.14
+git clone --depth=1 https://$DEVICE_REPO:$DEVICE_TOKEN@github.com/$DEVICE_REPO/kernel_xiaomi_raphael -b topaz $CIRRUS_WORKING_DIR/msm-4.14
 git clone https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 --depth=1 -b master $CIRRUS_WORKING_DIR/linux-x86
 mv $CIRRUS_WORKING_DIR/linux-x86/clang-r450784d $CIRRUS_WORKING_DIR/clang && rm -rf $CIRRUS_WORKING_DIR/linux-x86
 git clone --depth=1 https://github.com/back-up-git/AnyKernel3 -b main $CIRRUS_WORKING_DIR/AnyKernel
