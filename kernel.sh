@@ -27,19 +27,19 @@ cd $CIRRUS_WORKING_DIR/msm-4.14
 export BUILD_START=$(date +"%s")
 export KBUILD_BUILD_USER="AB"
 export KBUILD_BUILD_HOST="Server"
-export ARCH=arm64
-export PATH="$CIRRUS_WORKING_DIR/clang/bin/:$PATH"
-make O=out raphael_defconfig
+make O=out ARCH=arm64 raphael_defconfig
+PATH="$CIRRUS_WORKING_DIR/clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
-      LLVM=1 \
-      LLVM_IAS=1 \
-      CROSS_COMPILE="aarch64-linux-gnu-" \
-      CROSS_COMPILE_ARM32="arm-linux-gnueabi-" \
-      2>&1 | tee out/error.txt
+                      ARCH=arm64 \
+                      CC=clang \
+                      LLVM=1 \
+                      CROSS_COMPILE="aarch64-linux-gnu-" \
+                      CROSS_COMPILE_ARM32="arm-linux-gnueabi-" \
+                      2>&1 | tee out/error.txt
 export BUILD_END=$(date +"%s")
 export DIFF=$((BUILD_END - BUILD_START))
 
-export ZIP_NAME=Raphael-T-$(TZ=Asia/Kolkata date +%Y%m%d-%H%M).zip
+export ZIP_NAME=Topaz-Raphael-T-$(TZ=Asia/Kolkata date +%Y%m%d-%H%M).zip
 
 if [ -e out/arch/arm64/boot/Image.gz-dtb ] && [ -e out/arch/arm64/boot/dtbo.img ]; then
 cp out/arch/arm64/boot/Image.gz-dtb $CIRRUS_WORKING_DIR/AnyKernel
